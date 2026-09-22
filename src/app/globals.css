@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Season Mix — шрифт заголовков из макета. Файлы шрифта не входят в репозиторий:
+ * положите лицензионные woff2 в public/fonts, иначе используется запасной serif.
+ */
+@font-face {
+  font-family: "Season Mix";
+  src: url("/fonts/SeasonMix-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Season Mix";
+  src: url("/fonts/SeasonMix-SemiBoldItalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --surface: #f5f5f5;
+  --control: #f5f5f5;
+  --fg: #383838;
+  --fg-strong: #21201c;
+  --muted: #9c9c9c;
+  --subtle: #b0b0b0;
+  --secondary: #838383;
+  --tertiary: #6a6a6a;
+  --line: #ebebeb;
+  --line-strong: #d7d7d7;
+  --accent: #bf7cff;
+  --accent-soft: #d9b2ff;
+  --tint: #e9d4ff;
+  --review-line: #e9d4ff;
+  --glass: rgba(56, 56, 56, 0.12);
+  --header-bg: rgba(255, 255, 255, 0.7);
+  --inverse-bg: #1f1f1f;
+  --inverse-fg: #ffffff;
+  --inverse-muted: #d7d7d7;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #1f1f1f;
+  --surface: #2c2c2c;
+  --control: #515151;
+  --fg: #ffffff;
+  --fg-strong: #ffffff;
+  --muted: #b0b0b0;
+  --subtle: #9c9c9c;
+  --secondary: #c4c4c4;
+  --tertiary: #d7d7d7;
+  --line: #515151;
+  --line-strong: #515151;
+  --accent: #aa51fb;
+  --accent-soft: #aa51fb;
+  --tint: #952eef;
+  --review-line: #454545;
+  --glass: rgba(255, 255, 255, 0.12);
+  --header-bg: rgba(31, 31, 31, 0.7);
+  --inverse-bg: #ffffff;
+  --inverse-fg: #383838;
+  --inverse-muted: #838383;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-control: var(--control);
+  --color-fg: var(--fg);
+  --color-fg-strong: var(--fg-strong);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-tint: var(--tint);
+  --color-review-line: var(--review-line);
+  --color-glass: var(--glass);
+  --color-header: var(--header-bg);
+  --color-inverse: var(--inverse-bg);
+  --color-inverse-fg: var(--inverse-fg);
+  --color-inverse-muted: var(--inverse-muted);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: var(--font-geist-pixel-square), ui-monospace, monospace;
+  --font-display: "Season Mix", var(--font-display-fallback), Georgia, serif;
+  --font-poppins: var(--font-poppins-var), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* Иконки-маски: берут цвет из currentColor и поэтому следуют теме.
+     Слой нужен, чтобы утилиты вроде hidden могли перекрыть display. */
+  .icon {
+    display: inline-block;
+    flex-shrink: 0;
+    background-color: currentColor;
+    mask: var(--icon) center / contain no-repeat;
+  }
+}
+
+/*
+ * Превью-арты карточек и обложек рисуются в координатах макета.
+ * --u — один пиксель макета, пересчитанный на реальную ширину контейнера.
+ */
+.art {
+  container-type: inline-size;
+}
+.art-canvas {
+  --u: calc(100cqw / var(--art-w));
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
