@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Официальный рантайм Next.js для Netlify: серверные маршруты, proxy.ts и оптимизация картинок.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
