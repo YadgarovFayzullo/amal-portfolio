@@ -14,7 +14,7 @@ const geist = Geist({
   subsets: ["latin", "cyrillic"],
 });
 
-/** Запасной шрифт для заголовков, пока не подключён Season Mix из макета. */
+/** Запасной шрифт для заголовков: используется, пока грузится Season Mix, и для его начертаний, которых нет в public/fonts. */
 const display = Literata({
   variable: "--font-display-fallback",
   subsets: ["latin", "cyrillic"],

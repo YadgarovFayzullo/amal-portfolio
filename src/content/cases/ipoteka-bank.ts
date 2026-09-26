@@ -31,7 +31,8 @@ export const ipotekaBank: Case = {
   role: t("Product Designer", "Product Designer"),
   team: [t("2 Designers", "2 Designers")],
   // Кейс закрыт NDA: на сайте видна только первая глава. Уберите поле, чтобы открыть его целиком.
-  nda: { visibleSections: 1 },
+  // Кейс целиком под NDA: показываем только вводную часть.
+  nda: { visibleSections: 0 },
   quote: {
     type: "quote",
     title: t("Designer Review", "Ревью от дизайнера"),

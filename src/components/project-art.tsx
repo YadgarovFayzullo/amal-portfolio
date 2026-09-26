@@ -229,8 +229,10 @@ function HammersmithArt({ variant, tags }: ArtProps) {
   const g = geometry[variant];
   const hero = variant === "hero";
   const hover = variant === "hover";
+  const card = variant === "card";
   return (
-    <Art width={g.w} height={g.h} className="bg-[#d79f9b]">
+    // Карточка на главной серая, фирменный розовый — только при наведении и на обложке кейса.
+    <Art width={g.w} height={g.h} className={card ? "bg-surface" : "bg-[#d79f9b]"}>
       {hero && (
         <Piece
           src="/img/hammersmith/825dd.svg"
@@ -260,7 +262,21 @@ function HammersmithArt({ variant, tags }: ArtProps) {
         y={g.pad}
         w={hero ? 303 : 194.75}
         h={hero ? 49.787 : 32}
+        className={card ? "dark:hidden" : ""}
       />
+      {card && (
+        // В тёмной теме бордовый логотип не читается на сером — красим его в цвет текста через маску.
+        <span
+          className="icon absolute hidden text-fg dark:block"
+          style={{
+            ["--icon" as string]: "url(/img/hammersmith/9a93a.svg)",
+            left: u(g.pad),
+            top: u(g.pad),
+            width: u(194.75),
+            height: u(32),
+          }}
+        />
+      )}
       <Tags items={tags} pad={g.pad} />
     </Art>
   );

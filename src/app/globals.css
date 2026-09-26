@@ -3,12 +3,14 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /*
- * Season Mix — шрифт заголовков из макета. Файлы шрифта не входят в репозиторий:
- * положите лицензионные woff2 в public/fonts, иначе используется запасной serif.
+ * Season Mix — шрифт заголовков из макета (public/fonts, начертание Medium).
+ * Для SemiBold Italic (акцент в блоке отзывов) файла пока нет — там подставляется запасной serif.
  */
 @font-face {
   font-family: "Season Mix";
-  src: url("/fonts/SeasonMix-Medium.woff2") format("woff2");
+  src:
+    url("/fonts/SeasonMix-Medium.woff2") format("woff2"),
+    url("/fonts/SeasonMix-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;

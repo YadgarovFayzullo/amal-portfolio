@@ -142,7 +142,10 @@ const reviewText = t(
 
 export const reviews = [
   {
-    text: reviewText,
+    text: t(
+      "“Amal built QRtifact from scratch: from a survey of tourists and the User Flow to the final screens of every section. He is easy to work with — he brings his own options, pushes back when it matters, and is not afraid to redo a solution that did not work. We built the CJM together, and it noticeably simplified development: the team had no questions left about what we were doing and why.”",
+      "«Амаль делал QRtifact с нуля: от опроса туристов и User Flow до финальных экранов всех разделов. С ним легко работать — он сам приносит варианты, спорит по делу и не боится переделать решение, если оно не сработало. CJM мы собирали вместе, и это заметно упростило разработку: у команды не осталось вопросов, что и зачем мы делаем.»",
+    ),
     author: "Fayzullo Yadgarov",
     position: t("Co-Founder KiGo | CEO QRtifact", "Co-Founder KiGo | CEO QRtifact"),
     avatar: "/img/home/review-1.webp",
