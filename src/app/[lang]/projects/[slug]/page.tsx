@@ -102,10 +102,10 @@ export default async function CasePage({ params }: PageProps<"/[lang]/projects/[
 
 function NdaNotice({ locale }: { locale: Locale }) {
   return (
-    <div className="relative">
-      {/* Размытая «заглушка» вместо закрытой части кейса. */}
-      <div className="h-64 w-full rounded-[32px] bg-surface blur-sm" aria-hidden />
-      <div className="absolute inset-0 flex items-center justify-center p-4">
+    <div className="relative mt-4 px-4 py-16 md:py-24">
+      {/* Размытая «заглушка» вместо закрытой части кейса: выше карточки, чтобы размытие было видно и сверху, и снизу. */}
+      <div className="absolute inset-0 rounded-[32px] bg-surface blur-md" aria-hidden />
+      <div className="relative flex justify-center">
         <div className="flex w-full max-w-[520px] flex-col items-center gap-4 rounded-[32px] bg-bg/90 p-8 backdrop-blur-md">
           <Icon name="lock" size={64} className="text-fg" />
           <p className="font-display text-[48px] leading-[48px] tracking-[-0.48px] text-fg">NDA</p>
