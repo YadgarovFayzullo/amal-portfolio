@@ -236,8 +236,8 @@ function HammersmithArt({ variant, tags }: ArtProps) {
       {hero && (
         <Piece
           src="/img/hammersmith/825dd.svg"
-          x={656}
-          y={-10}
+          x={451}
+          y={-18}
           w={511}
           h={496}
           className="-scale-y-100 opacity-12"
@@ -255,6 +255,15 @@ function HammersmithArt({ variant, tags }: ArtProps) {
           style={OVERLAY}
         />
       )}
+      {/* Ноутбук с дашбордом (выбранный клиентом 3-й вариант). */}
+      <Piece
+        src="/img/hammersmith/a8de7.webp"
+        contain
+        x={hero ? 565.85 : 52}
+        y={hero ? 38 : 71}
+        w={hero ? 654.264 : 400}
+        h={hero ? 422 : 258}
+      />
       <Piece
         src={hover ? "/img/hammersmith/logo-hover.svg" : "/img/hammersmith/9a93a.svg"}
         contain
